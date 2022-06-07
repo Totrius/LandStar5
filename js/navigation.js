@@ -3,17 +3,21 @@ const app = {
   activeModules: [],
   frame_target: undefined,
   path: undefined,
-  points: [],
+  points: [
+    { name: "Baranek Boży", code: "BAR1", x: -40, y: 7, h: 13 },
+    { name: "Zbrodniarz", code: "JP2", x: 21, y: 37, h: 69 },
+    { name: "Tadzio Kanalarz", code: "TK3", x: 164, y: -78, h: -7 },
+  ],
+  views: {
+    main_menu: "/parts/mainMenu.html",
+    cogo: "/parts/formCOGO.html",
+    forms: {
+      measure: "/parts/formMeasure.html",
+      addPoint: "/parts/formAddPoint.html",
+    },
+  }
 };
 
-app.views = {
-  main_menu: "/parts/mainMenu.html",
-  cogo: "/parts/formCOGO.html",
-  forms: {
-    measure: "/parts/formMeasure.html",
-    addPoint: "/parts/formAddPoint.html",
-  },
-};
 
 app.loadView = function (view) {
   fetch(view)
@@ -30,14 +34,17 @@ app.loadView = function (view) {
       let module;
       if (app.path) {
         module = app.activeModules.find(mod => mod.path === app.path);
-        if (module !== undefined) module.onUnload();
+        if (module !== undefined) {
+          module.onUnload();
+          app.activeModules = app.activeModules.filter(mod => mod.name !== module.name);
+        }
       }
 
       app.frame_target.innerHTML = body;
       app.path = view;
 
       module = app.modules.find(mod => mod.path === app.path);
-      if (module !== undefined){ 
+      if (module !== undefined) {
         module.onLoad();
         app.activeModules.push(module);
       }
@@ -59,11 +66,15 @@ app.onLoad = function () {
 
   app.modules
     .filter(mod => mod.path === undefined)
-    .forEach(mod => mod.onLoad());
+    .forEach(mod => {
+      app.activeModules.push(mod);
+      mod.onLoad();
+    });
 }
 
 app.onClick = function (event) {
-  app.activeModules.forEach( mod => mod.onClick(event.target.id));
+  app.activeModules.forEach(mod => mod.onClick(event.target.id));
+
   switch (event.target.id) {
     case "mm_wpisz":
       app.loadView(app.views.forms.addPoint);
