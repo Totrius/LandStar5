@@ -35,7 +35,26 @@ app.onLoad = function () {
 
 app.onClick = function (event) {
   console.log(event.target);
+  switch (event.target.id) {
+    case "mm_wpisz":
+      app.loadView(app.views.forms.addPoint);
+      break;
+    case "app_wyjdz":
+      app.loadView(app.views.main_menu);
+    break;
+    case "app_navbar":
+      app.loadView(app.views.main_menu);
+    break;
+    case "mm_pomiar":
+      app.loadView(app.views.forms.measure);
+    break;
+  
+    default:
+      break;
+  }
 }
+
+
 
 document.addEventListener("DOMContentLoaded", app.onLoad);
 document.addEventListener('click', app.onClick);
