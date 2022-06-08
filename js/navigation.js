@@ -11,6 +11,7 @@ const app = {
   views: {
     main_menu: "/parts/mainMenu.html",
     cogo: "/parts/formCOGO.html",
+    map: "/parts/displayPoints.html",
     forms: {
       measure: "/parts/formMeasure.html",
       addPoint: "/parts/formAddPoint.html",
@@ -80,30 +81,30 @@ app.onClick = function (event) {
   switch (event.target.id || event.target.parentElement.id) {
     case "mm_wpisz":
       app.loadView(app.views.forms.addPoint);
-      break;
+      return;
     case "app_wyjdz":
       app.loadView(app.views.main_menu);
-      break;
+      return;
     case "app_navbar":
       app.loadView(app.views.main_menu);
-      break;
+      return;
     case "mm_pomiar":
       app.loadView(app.views.forms.measure);
-      break;
+      return;
     case "mm_cogo":
       app.loadView(app.views.cogo);
-      break;
+      return;
     case "mm_pliki":
       app.loadView(app.views.forms.files);
     case "app_submit":
       app.loadView(app.views.main_menu);
-      break;
+      return;
     case "mm_info":
       app.loadView(app.views.forms.info);
-      break;
-
-    default:
-      break;
+      return;
+    case "mm_map":
+      app.loadView(app.views.map);
+      return;
   }
 }
 
