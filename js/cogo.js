@@ -14,7 +14,7 @@ app.registerModule({
   },
   onClick(id) {
     switch (id) {
-      case "submit":
+      case "app_submit":
         return app.loadView(app.views.main_menu);
     }
   },

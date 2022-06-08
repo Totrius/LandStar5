@@ -94,6 +94,8 @@ app.onClick = function (event) {
       break;
     case "mm_pliki":
       app.loadView(app.views.forms.files);
+    case "app_submit":
+      app.loadView(app.views.main_menu);
       break;
 
     default:
