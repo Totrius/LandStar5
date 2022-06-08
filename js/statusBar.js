@@ -1,26 +1,18 @@
-
-
 app.registerModule({
   name: "statusBar",
   path: undefined,
-  submitText: undefined,
-  toolbar: undefined,
   onLoad() {
-    setInterval(()=> {
-    navigator.getBattery().then((battery)=>{
-    let level = 0;
-    level = battery.level
-    this.setBattery1(level);
-    this.setBattery2(level/2);
-    }, 60000);
-    
-  })
-    
+    setInterval(() => {
+      navigator.getBattery()
+        .then((battery) => {
+          let level = battery.level
+          this.setBattery1(level);
+          this.setBattery2(level / 2);
+        }, 60000);
+    })
   },
   onUnload() { },
   onClick(id) { },
-  
-  
 
   getBatteryIcon(value) {
     if (value < 0.33) return 'bi bi-battery';

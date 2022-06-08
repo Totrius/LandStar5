@@ -3,7 +3,11 @@
     <h3>Liczba punktów w bazie: <span class="badge bg-secondary" id="fil_num">5</span></h3>
     <div class="mb-3">
       <label for="fil_text" class="form-label">Dane punktów</label>
-      <textarea class="form-control" id="fil_text" rows="3"></textarea>
+      <textarea class="form-control font-monospace" id="fil_text" rows="3"
+        aria-describedby="fil_text_helper"></textarea>
+      <div id="fil_text_helper" class="form-text">
+        Format importu: <code>nazwa;kod;x;y;h</code>
+      </div>
     </div>
     <button type="button" class="btn btn-outline-primary" id="fil_import">Importuj</button>
     <button type="button" class="btn btn-outline-primary" id="fil_export">Eksportuj</button>

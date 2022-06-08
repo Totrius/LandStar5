@@ -1,8 +1,6 @@
 app.registerModule({
   name: "files",
   path: app.views.forms.files,
-  submitText: undefined,
-  toolbar: undefined,
   onLoad() {
     this.updateCount();
   },
@@ -40,13 +38,18 @@ app.registerModule({
             if (!fields[i])
               throw new Error("Empty field");
 
-          return {
-            name: fields[0],
-            code: fields[1],
-            x: parseFloat(fields[2]),
-            y: parseFloat(fields[3]),
-            h: parseFloat(fields[4]),
-          }
+          const name = fields[0];
+          const code = fields[1];
+          const x = parseFloat(fields[2]);
+          const y = parseFloat(fields[3]);
+          const h = parseFloat(fields[4]);
+
+          if (!this.checkNumber(x, -90, 90)
+            || !this.checkNumber(y, -180, 180)
+            || !this.checkNumber(h))
+            throw new Error("Wrong number");
+
+          return { name, code, x, y, h };
         });
       app.points = points;
       this.updateCount();
@@ -54,9 +57,13 @@ app.registerModule({
       alert("Nieprawidłowa składnia pliku!");
       console.log(err);
     }
+  },
+  checkNumber(num, min = -Infinity, max = Infinity) {
+    if (isNaN(num)) return false;
+    if (typeof num !== 'number') return false;
+    if (num < min) return false;
+    if (num > max) return false;
+
+    return true;
   }
 });
-
-
-
-//mm_pliki

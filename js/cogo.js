@@ -2,8 +2,6 @@
 app.registerModule({
   name: "cogo",
   path: app.views.cogo,
-  submitText: "ok",
-  toolbar: undefined,
   onLoad() {
     this.table = document.getElementById("cogo_tablica");
     this.clearTable();
