@@ -6,6 +6,7 @@ app.registerModule({
     this.ctx = this.canvas.getContext("2d");
 
     this.rysujLinie();
+    this.aktualizujWynik();
   },
   onUnload() { },
   onClick(id) {
@@ -27,6 +28,25 @@ app.registerModule({
     this.ctx.moveTo(x1, y1);
     this.ctx.lineTo(x2, y2);
     this.ctx.stroke();
+  },
+  aktualizujWynik() {
+    const [p1, p2] = app.points_to_draw;
+
+    const dx = p2.x - p1.x;
+    const dy = p2.y - p1.y;
+    const dh = p2.h - p1.h;
+
+    const dist_2d = Math.sqrt(dx * dx + dy * dy);
+    const dist_3d = Math.sqrt(dx * dx + dy * dy + dh * dh);
+
+    const output = document.getElementById('app_output');
+    output.innerText = `Wynik ostatniego pomiaru:
+    Odległość na płaszczyźnie: ${this.roundTo(dist_2d, 4)}m
+    Odległość przestrzenna: ${this.roundTo(dist_3d, 4)}m
+    `
+  },
+  roundTo(num, prec) {
+    return Math.round(num * Math.pow(10, prec)) / Math.pow(10, prec);
   }
 });
 
