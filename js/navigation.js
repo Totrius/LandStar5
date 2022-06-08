@@ -8,10 +8,12 @@ const app = {
     { name: "Zbrodniarz", code: "JP2", x: 21, y: 37, h: 69 },
     { name: "Tadzio Kanalarz", code: "TK3", x: -78, y: 164, h: -7 },
   ],
+  points_to_draw: [],
   views: {
     main_menu: "/parts/mainMenu.html",
     cogo: "/parts/formCOGO.html",
     map: "/parts/displayPoints.html",
+    measure: "/parts/displayMeasure.html",
     forms: {
       measure: "/parts/formMeasure.html",
       addPoint: "/parts/formAddPoint.html",
