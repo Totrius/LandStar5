@@ -29,4 +29,5 @@ app.registerModule({
       }
 
   },
+  
 });
