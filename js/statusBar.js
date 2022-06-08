@@ -1,15 +1,27 @@
+
+
 app.registerModule({
   name: "statusBar",
   path: undefined,
   submitText: undefined,
   toolbar: undefined,
   onLoad() {
-    this.setBattery1(Math.random());
-    this.setBattery2(Math.random());
+    setInterval(()=> {
+    navigator.getBattery().then((battery)=>{
+    let level = 0;
+    level = battery.level
+    this.setBattery1(level);
+    this.setBattery2(level/2);
+    }, 60000);
+    
+  })
+    
   },
   onUnload() { },
   onClick(id) { },
   
+  
+
   getBatteryIcon(value) {
     if (value < 0.33) return 'bi bi-battery';
     if (value < 0.67) return 'bi bi-battery-half';
