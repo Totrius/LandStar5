@@ -8,13 +8,11 @@ app.registerModule({
     this.canvas = document.getElementById("dp_canvas")
     this.ctx = this.canvas.getContext("2d");
 
-    this.ctx.fillStyle = '#f0f';
-    this.ctx.rect(0, 0, this.canvas.width, this.canvas.height);
-    this.ctx.fill();
+    this.rysowanieZBazy();
 
   },
   onUnload() {
-    
+
   },
   onClick(id) {
     switch (id) {
@@ -22,4 +20,21 @@ app.registerModule({
         return app.loadView(app.views.main_menu);
     }
   },
+  rysowanieZBazy() {
+    let x, y;
+    for (let i = 0; i < app.points.length; i++) {
+      x = app.points[i].x;
+      x = (x + 180) * this.canvas.width / 360;
+      y = app.points[i].y;
+      y = (y + 90) * this.canvas.height / 180;
+
+      this.ctx.beginPath();
+      this.ctx.arc(x, y, 2, 0, 2 * Math.PI, false);
+      this.ctx.fill();
+      this.ctx.stroke();
+    }
+
+  }
+
 });
+
