@@ -77,7 +77,7 @@ app.onLoad = function () {
 app.onClick = function (event) {
   app.activeModules.forEach(mod => mod.onClick(event.target.id));
 
-  switch (event.target.id) {
+  switch (event.target.id || event.target.parentElement.id) {
     case "mm_wpisz":
       app.loadView(app.views.forms.addPoint);
       break;
