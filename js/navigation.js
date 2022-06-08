@@ -14,6 +14,7 @@ const app = {
     forms: {
       measure: "/parts/formMeasure.html",
       addPoint: "/parts/formAddPoint.html",
+      files: "/parts/formFiles.html"
     },
   }
 };
@@ -90,6 +91,9 @@ app.onClick = function (event) {
       break;
     case "mm_cogo":
       app.loadView(app.views.cogo);
+      break;
+    case "mm_pliki":
+      app.loadView(app.views.forms.files);
       break;
 
     default:
