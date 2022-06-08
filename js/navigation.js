@@ -6,7 +6,7 @@ const app = {
   points: [
     { name: "Baranek Boży", code: "BAR1", x: -40, y: 7, h: 13 },
     { name: "Zbrodniarz", code: "JP2", x: 21, y: 37, h: 69 },
-    { name: "Tadzio Kanalarz", code: "TK3", x: 164, y: -78, h: -7 },
+    { name: "Tadzio Kanalarz", code: "TK3", x: -78, y: 164, h: -7 },
   ],
   views: {
     main_menu: "/parts/mainMenu.html",
@@ -96,8 +96,6 @@ app.onClick = function (event) {
       return;
     case "mm_pliki":
       app.loadView(app.views.forms.files);
-    case "app_submit":
-      app.loadView(app.views.main_menu);
       return;
     case "mm_info":
       app.loadView(app.views.forms.info);
