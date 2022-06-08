@@ -91,6 +91,9 @@ app.onClick = function (event) {
     case "mm_cogo":
       app.loadView(app.views.cogo);
       break;
+    case "app_submit":
+      app.loadView(app.views.main_menu);
+      break;
 
     default:
       break;
