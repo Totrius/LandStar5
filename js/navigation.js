@@ -14,7 +14,8 @@ const app = {
     forms: {
       measure: "/parts/formMeasure.html",
       addPoint: "/parts/formAddPoint.html",
-      files: "/parts/formFiles.html"
+      files: "/parts/formFiles.html",
+      info: "/parts/formInfo.html"
     },
   }
 };
@@ -96,6 +97,9 @@ app.onClick = function (event) {
       app.loadView(app.views.forms.files);
     case "app_submit":
       app.loadView(app.views.main_menu);
+      break;
+    case "mm_info":
+      app.loadView(app.views.forms.info);
       break;
 
     default:
