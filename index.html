@@ -46,7 +46,7 @@
       </div>
       <div class="col align-self-center">
         <div class="satelites vstack fs-4">
-          <i class="bi bi-webcam fs-2"></i> 7/16
+          <i class="bi bi-webcam fs-2"></i> <span id="app_sat">7/16</span>
         </div>
       </div>
       <div class="col align-self-center">
@@ -60,36 +60,28 @@
           <div class="hstack gap-2"><i class="bi bi-align-bottom"></i> 2.00</div>
         </div>
       </div>
-      <div class="col align-self-center">
-        <div class="height">
-          <button class="btn btn-outline-dark btn-lg mx-auto">Menu Mapy</button>
-        </div>
-      </div>
     </div>
     <!-- TOOLS BAR -->
     <div class="row text-center mt-3">
       <div class="col align-self-bottom d-flex align-items-end">
         <button id="app_wyjdz" class="btn btn-outline-primary fs-2 mx-auto">Wyjdź</button>
       </div>
-      <div class="col-7">
+      <div class="col-6">
         <div class="row pb-2">
-          <div class="col">Fix H:0.001;V:0.003;RMS:0.002</div>
+          <div class="col" id="app_output">Fix H:0.001;V:0.003;RMS:0.002</div>
         </div>
         <div class="row">
           <div class="col">
-            <button class="btn btn-outline-primary"><i class="bi bi-zoom-in"></i></button>
+            <button class="btn btn-outline-primary" disabled><i class="bi bi-house"></i></button>
           </div>
           <div class="col">
-            <button class="btn btn-outline-primary"><i class="bi bi-zoom-out"></i></button>
+            <button class="btn btn-outline-primary" disabled><i class="bi bi-zoom-in"></i></button>
           </div>
           <div class="col">
-            <button class="btn btn-outline-primary"><i class="bi bi-arrows-move"></i></button>
+            <button class="btn btn-outline-primary" disabled><i class="bi bi-zoom-out"></i></button>
           </div>
           <div class="col">
-            <button class="btn btn-outline-primary"><i class="bi bi-house"></i></button>
-          </div>
-          <div class="col">
-            <button class="btn btn-outline-primary">Opcje</button>
+            <button class="btn btn-outline-primary" disabled><i class="bi bi-arrows-move"></i></button>
           </div>
         </div>
       </div>
@@ -103,6 +95,9 @@
   <script src="js/addPoint.js"></script>
   <script src="js/cogo.js"></script>
   <script src="js/files.js"></script>
+  <script src="js/displayPoints.js"></script>
+  <script src="js/displayMeasure.js"></script>
+  <script src="js/measure.js"></script>
 </body>
 
 </html>

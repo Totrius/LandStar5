@@ -4,17 +4,21 @@ const app = {
   frame_target: undefined,
   path: undefined,
   points: [
-    { name: "Baranek Boży", code: "BAR1", x: -40, y: 7, h: 13 },
-    { name: "Zbrodniarz", code: "JP2", x: 21, y: 37, h: 69 },
-    { name: "Tadzio Kanalarz", code: "TK3", x: 164, y: -78, h: -7 },
+    { name: "Komin", code: "BAR1", x: -40, y: 7, h: 13 },
+    { name: "Dach", code: "JP2", x: 21, y: 37, h: 69 },
+    { name: "Kanał", code: "TK3", x: 164, y: -78, h: -7 },
   ],
+  points_to_draw: [],
   views: {
     main_menu: "/parts/mainMenu.html",
     cogo: "/parts/formCOGO.html",
+    map: "/parts/displayPoints.html",
+    measure: "/parts/displayMeasure.html",
     forms: {
       measure: "/parts/formMeasure.html",
       addPoint: "/parts/formAddPoint.html",
-      files: "/parts/formFiles.html"
+      files: "/parts/formFiles.html",
+      info: "/parts/formInfo.html"
     },
   }
 };
@@ -76,30 +80,31 @@ app.onLoad = function () {
 app.onClick = function (event) {
   app.activeModules.forEach(mod => mod.onClick(event.target.id));
 
-  switch (event.target.id) {
+  switch (event.target.id || event.target.parentElement.id) {
     case "mm_wpisz":
       app.loadView(app.views.forms.addPoint);
-      break;
+      return;
     case "app_wyjdz":
       app.loadView(app.views.main_menu);
-      break;
+      return;
     case "app_navbar":
       app.loadView(app.views.main_menu);
-      break;
+      return;
     case "mm_pomiar":
       app.loadView(app.views.forms.measure);
-      break;
+      return;
     case "mm_cogo":
       app.loadView(app.views.cogo);
-      break;
+      return;
     case "mm_pliki":
       app.loadView(app.views.forms.files);
-    case "app_submit":
-      app.loadView(app.views.main_menu);
-      break;
-
-    default:
-      break;
+      return;
+    case "mm_info":
+      app.loadView(app.views.forms.info);
+      return;
+    case "mm_map":
+      app.loadView(app.views.map);
+      return;
   }
 }
 
