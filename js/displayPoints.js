@@ -7,7 +7,6 @@ app.registerModule({
     this.ctx = this.canvas.getContext("2d");
 
     this.rysowanieZBazy();
-    this.rysujLinie();
   },
   onUnload() { },
   onClick(id) {
@@ -26,6 +25,7 @@ app.registerModule({
 
       this.ctx.beginPath();
       this.ctx.arc(x, y, 2, 0, 2 * Math.PI, false);
+      console.log({ x, y });
       this.ctx.fill();
       this.ctx.stroke();
     }

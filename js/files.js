@@ -44,8 +44,8 @@ app.registerModule({
           const y = parseFloat(fields[3]);
           const h = parseFloat(fields[4]);
 
-          if (!this.checkNumber(x, -90, 90)
-            || !this.checkNumber(y, -180, 180)
+          if (!this.checkNumber(x, -180, 180)
+            || !this.checkNumber(y, -90, 90)
             || !this.checkNumber(h))
             throw new Error("Wrong number");
 
