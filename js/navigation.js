@@ -4,9 +4,9 @@ const app = {
   frame_target: undefined,
   path: undefined,
   points: [
-    { name: "Baranek Boży", code: "BAR1", x: -40, y: 7, h: 13 },
-    { name: "Zbrodniarz", code: "JP2", x: 21, y: 37, h: 69 },
-    { name: "Tadzio Kanalarz", code: "TK3", x: -78, y: 164, h: -7 },
+    { name: "Komin", code: "BAR1", x: -40, y: 7, h: 13 },
+    { name: "Dach", code: "JP2", x: 21, y: 37, h: 69 },
+    { name: "Kanał", code: "TK3", x: 164, y: -78, h: -7 },
   ],
   points_to_draw: [],
   views: {
