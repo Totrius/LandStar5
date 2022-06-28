@@ -2,18 +2,31 @@ app.registerModule({
   name: "statusBar",
   path: undefined,
   onLoad() {
+    this.sats = Math.round(Math.random() * 10) + 4;
+
     setInterval(() => {
-      navigator.getBattery()
-        .then((battery) => {
-          let level = battery.level
-          this.setBattery1(level);
-          this.setBattery2(level / 2);
-        }, 60000);
-    })
+      this.updateUI();
+    }, 2000)
+    this.updateUI(); 1
   },
   onUnload() { },
   onClick(id) { },
 
+  updateUI() {
+    navigator.getBattery()
+      .then((battery) => {
+        let level = battery.level
+        this.setBattery1(level);
+        this.setBattery2(level / 2);
+      });
+
+    this.sats += Math.round((Math.random() - 0.5) * 2);
+    this.sats = Math.min(this.sats, 16);
+    this.sats = Math.max(this.sats, 4);
+
+    document.getElementById("app_sat")
+      .innerText = `${this.sats}/16`;
+  },
   getBatteryIcon(value) {
     if (value < 0.33) return 'bi bi-battery';
     if (value < 0.67) return 'bi bi-battery-half';

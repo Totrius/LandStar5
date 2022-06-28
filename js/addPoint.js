@@ -7,15 +7,15 @@ app.registerModule({
     if (id == "app_submit") {
       let name = document.getElementById("nazwa").value;
       let code = document.getElementById("identyfikator").value;
-      let x = document.getElementById("szerokosc").value;
+      let x = document.getElementById("dlugosc").value;
       x = parseFloat(x);
-      let y = document.getElementById("dlugosc").value;
+      let y = document.getElementById("szerokosc").value;
       y = parseFloat(y);
       let h = document.getElementById("wysokosc").value;
       h = parseFloat(h);
 
-      if (!this.checkNumber(x, -90, 90)
-        || !this.checkNumber(y, -180, 180)
+      if (!this.checkNumber(x, -180, 180)
+        || !this.checkNumber(y, -90, 90)
         || !this.checkNumber(h)) {
         alert("Błędne dane liczbowe");
 
