@@ -1,0 +1,1 @@
+Działająca aplikacja -> https://landstar.netlify.app/
